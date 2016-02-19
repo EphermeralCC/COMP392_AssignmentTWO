@@ -1,13 +1,13 @@
 {
-  "name": "comp392-lesson5",
+  "name": "comp392-assignment2",
   "authors": [
-    "Tom Tsiliopoulos <tsiliopoulos@hotmail.com>"
+    "Christine Cho <christine.cho.94@gmail.com>"
   ],
-  "description": "COMP392-Lesson5 for Advanced Graphics",
+  "description": "COMP392-Assignment 2 Solar System",
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "https://github.com/CentennialCollege/COMP392-Lesson5",
+  "homepage": "https://github.com/EphermeralCC/COMP392_AssignmentTWO",
   "ignore": [
     "**/.*",
     "node_modules",

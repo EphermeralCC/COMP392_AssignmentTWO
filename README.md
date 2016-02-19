@@ -1,3 +1,3 @@
-#COMP392-Lesson 5
+#COMP392-Assignment 2
 
-COMP392-Lesson 5 for COMP392 - Advanced Graphics @ Centennial College
+COMP392- Assignment 2 Solar System

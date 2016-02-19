@@ -1,7 +1,7 @@
 {
-  "name": "comp392-lesson5",
+  "name": "comp392-assignment2",
   "version": "1.0.0",
-  "description": "COMP392-Lesson 5 for Centennial College",
+  "description": "COMP392-Assignment 2 Solar System",
   "main": "game.js",
   "dependencies": {
     "typescript": "^1.7.5"
@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CentennialCollege/COMP392-Lesson5.git"
+    "url": "git+https://github.com/EphermeralCC/COMP392_AssignmentTWO.git"
   },
   "author": "Tom Tsiliopoulos",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CentennialCollege/COMP392-Lesson5/issues"
+    "url": "https://github.com/EphermeralCC/COMP392_AssignmentTWO/issues"
   },
-  "homepage": "https://github.com/CentennialCollege/COMP392-Lesson5#readme"
+  "homepage": "https://github.com/EphermeralCC/COMP392_AssignmentTWO#readme"
 }

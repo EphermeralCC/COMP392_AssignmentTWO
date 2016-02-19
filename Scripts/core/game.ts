@@ -50,6 +50,11 @@ var firstPlanet: Mesh;
 var secondPlanet: Mesh;
 var thirdPlanet: Mesh;
 var fourthPlanet: Mesh;
+var fifthPlanet: Mesh;
+var secondPlanetParent: Mesh;
+var thirdPlanetParent: Mesh;
+var fourthPlanetParent: Mesh;
+var fifthPlanetParent: Mesh;
 var moon: Mesh;
 
 function init() {
@@ -76,22 +81,94 @@ function init() {
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     
-    //Add a Cube to the Scene
+    //Add a Sun to the Scene+++++++++++++++++++++++++++++++++++++++++++//
     sun = new gameObject(
         new CubeGeometry(10, 10, 10),
         new LambertMaterial({ color: 0xff35ff }),
         0, 4, 0);
 
     scene.add(sun);
-    console.log("Added Cube Primitive to scene...");
-    
+    console.log("Added Sun Primitive to scene...");
+
     firstPlanet = new gameObject(
         new CubeGeometry(2, 2, 2),
         new LambertMaterial({ color: 0xff0000 }),
-        10, 0, 0);
+        20, 0, 0);
 
     sun.add(firstPlanet)
-    console.log("Added Child Cube Primitive to cube object...");
+    console.log("Added First Planet Primitive to cube object...");
+    
+    //Add a Second Planet Parent to the Scene++++++++++++++++++++++++++++++++++++//
+    
+    secondPlanetParent = new gameObject(
+        new CubeGeometry(1, 1, 1),
+        new LambertMaterial({ color: 0xff35ff }),
+        0, 4, 0);
+
+    scene.add(secondPlanetParent);
+    console.log("Added Second Planet Parent to scene...");
+
+    secondPlanet = new gameObject(
+        new CubeGeometry(1.5, 1.5, 1.5),
+        new LambertMaterial({ color: 0xff0000 }),
+        0, 0, 45);
+
+    secondPlanetParent.add(secondPlanet)
+    console.log("Added Second Planet Primitive to cube object...");
+    
+    //Add a Third Planet Parent to the Scene++++++++++++++++++++++++++++++++++++//
+    
+    thirdPlanetParent = new gameObject(
+        new CubeGeometry(1, 1, 1),
+        new LambertMaterial({ color: 0xff35ff }),
+        0, 4, 0);
+
+    scene.add(thirdPlanetParent);
+    console.log("Added Third Planet Parent to scene...");
+
+    thirdPlanet = new gameObject(
+        new CubeGeometry(4, 4, 4),
+        new LambertMaterial({ color: 0xff0000 }),
+        -70, 0, 0);
+
+    thirdPlanetParent.add(thirdPlanet)
+    console.log("Added Third Planet Primitive to cube object...");
+    
+    //Add a Fourth Planet Parent to the Scene++++++++++++++++++++++++++++++++++++//
+    
+    fourthPlanetParent = new gameObject(
+        new CubeGeometry(1, 1, 1),
+        new LambertMaterial({ color: 0xff35ff }),
+        0, 4, 0);
+
+    scene.add(fourthPlanetParent);
+    console.log("Added Fourth Planet Parent to scene...");
+
+    fourthPlanet = new gameObject(
+        new CubeGeometry(3, 3, 3),
+        new LambertMaterial({ color: 0xff0000 }),
+        0, 0, -100);
+
+    fourthPlanetParent.add(fourthPlanet)
+    console.log("Added Fourth Planet Primitive to cube object...");
+    
+    //Add a Fifth Planet Parent to the Scene++++++++++++++++++++++++++++++++++++//
+    
+    fifthPlanetParent = new gameObject(
+        new CubeGeometry(1, 1, 1),
+        new LambertMaterial({ color: 0xff35ff }),
+        0, 4, 0);
+
+    scene.add(fifthPlanetParent);
+    console.log("Added Fifth Planet Parent to scene...");
+
+    fifthPlanet = new gameObject(
+        new CubeGeometry(3, 3, 3),
+        new LambertMaterial({ color: 0xff0000 }),
+        -140, 0, 0);
+
+    fifthPlanetParent.add(fifthPlanet)
+    console.log("Added Fourth Planet Primitive to cube object...");
     
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x090909);
@@ -108,7 +185,7 @@ function init() {
     
     // add controls
     gui = new GUI();
-    control = new Control(0.05);
+    control = new Control(0.005);
     addControl(control);
 
     // Add framerate stats
@@ -130,7 +207,7 @@ function onResize(): void {
 }
 
 function addControl(controlObject: Control): void {
-    gui.add(controlObject, 'rotationSpeed', -0.5, 0.5);
+    gui.add(controlObject, 'rotationSpeed', -0.05, 0.05);
 }
 
 function addStatsObject() {
@@ -147,6 +224,10 @@ function gameLoop(): void {
     stats.update();
 
     sun.rotation.y += control.rotationSpeed;
+    secondPlanetParent.rotation.y += control.rotationSpeed;
+    thirdPlanetParent.rotation.y += control.rotationSpeed;
+    fourthPlanetParent.rotation.y += control.rotationSpeed;
+    fifthPlanetParent.rotation.y += control.rotationSpeed;
     
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
@@ -170,8 +251,8 @@ function setupCamera(): void {
     camera = new PerspectiveCamera(45, config.Screen.RATIO, 0.1, 1000);
     //camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.x = 0.6;
-    camera.position.y = 16;
-    camera.position.z = -40.5;
+    camera.position.y = 20;
+    camera.position.z = -100.5;
     // camera.position.x = 0.6;
     // camera.position.y = 16;
     // camera.position.z = -20.5;
