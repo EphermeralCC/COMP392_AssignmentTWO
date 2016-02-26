@@ -1,3 +1,12 @@
+//The Source file name: control.ts 
+//Author’s name: Christine Cho
+//Last Modified by: Christine Cho
+//Date last Modified: 02/26/2016
+//Program description: Manages the dat.ui to allow for the zoom and rotation of the planets
+//Revision History: 
+//      - Added Zoom Methods 02/26/2016
+//      - Added Planet rotation or orbit 02/20/2016
+
 /// <reference path="../../typings/tsd.d.ts"/>
 
 module objects {
@@ -18,6 +27,7 @@ module objects {
 
         public fifthPlanetRotation: number;
         public fifthPlanetOrbit: number;
+        public zoom: boolean = false;
         
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         constructor(firstPlanetOrbit: number, firstPlanetRotation: number, secondPlanetRotation: number, secondPlanetOrbit: number,
@@ -35,25 +45,33 @@ module objects {
             this.fourthPlanetRotation = fourthPlanetRotation;
             this.fourthPlanetOrbit = fourthPlanetOrbit;
 
-            this.fifthPlanetRotation = fourthPlanetRotation;
+            this.fifthPlanetRotation = fifthPlanetRotation;
             this.fifthPlanetOrbit = fifthPlanetOrbit;
         }
         
         //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++
+        
         public zoomIn(): void {
-            camera.position.set(thirdPlanet.position.x, thirdPlanet.position.y + 10, 
-            thirdPlanet.position.z -10);
-            // camera.position.x = thirdPlanet.position.x;
-            // camera.position.z = thirdPlanet.position.z;
-            // camera.lookAt(thirdPlanet.position)
-            console.log(thirdPlanet.position.x);
-            console.log(thirdPlanet.position.z);
+            this.zoom = true;
         }
 
         public zoomOut(): void {
-            camera.position.x = 0.6;
-            camera.position.y = 60;
-            camera.position.z = -175.5;
+            this.zoom = false;
         }
+
+        public controlZoom(): void {
+
+            if (this.zoom) {
+                thirdPlanet.updateMatrix();
+                var vector = new THREE.Vector3();
+                vector.setFromMatrixPosition(thirdPlanet.matrixWorld);
+                camera.position.set(vector.x, vector.y + 5, vector.z - 16);
+            } else {
+                camera.position.set(0.6, 60, -175.5);
+                console.log("false false");
+            }
+        }
+
+
     }
 }

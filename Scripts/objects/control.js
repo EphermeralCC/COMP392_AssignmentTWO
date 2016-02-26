@@ -5,6 +5,7 @@ var objects;
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
         function Control(firstPlanetOrbit, firstPlanetRotation, secondPlanetRotation, secondPlanetOrbit, thirdPlanetRotation, thirdPlanetOrbit, fourthPlanetRotation, fourthPlanetOrbit, fifthPlanetRotation, fifthPlanetOrbit) {
+            this.zoom = false;
             this.firstPlanetOrbit = firstPlanetOrbit;
             this.firstPlanetRotation = firstPlanetRotation;
             this.secondPlanetRotation = secondPlanetRotation;
@@ -13,22 +14,27 @@ var objects;
             this.thirdPlanetOrbit = thirdPlanetOrbit;
             this.fourthPlanetRotation = fourthPlanetRotation;
             this.fourthPlanetOrbit = fourthPlanetOrbit;
-            this.fifthPlanetRotation = fourthPlanetRotation;
+            this.fifthPlanetRotation = fifthPlanetRotation;
             this.fifthPlanetOrbit = fifthPlanetOrbit;
         }
         //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++
         Control.prototype.zoomIn = function () {
-            camera.position.set(thirdPlanet.position.x, thirdPlanet.position.y + 10, thirdPlanet.position.z - 10);
-            // camera.position.x = thirdPlanet.position.x;
-            // camera.position.z = thirdPlanet.position.z;
-            // camera.lookAt(thirdPlanet.position)
-            console.log(thirdPlanet.position.x);
-            console.log(thirdPlanet.position.z);
+            this.zoom = true;
         };
         Control.prototype.zoomOut = function () {
-            camera.position.x = 0.6;
-            camera.position.y = 60;
-            camera.position.z = -175.5;
+            this.zoom = false;
+        };
+        Control.prototype.controlZoom = function () {
+            if (this.zoom) {
+                thirdPlanet.updateMatrix();
+                var vector = new THREE.Vector3();
+                vector.setFromMatrixPosition(thirdPlanet.matrixWorld);
+                camera.position.set(vector.x, vector.y + 5, vector.z - 16);
+            }
+            else {
+                camera.position.set(0.6, 60, -175.5);
+                console.log("false false");
+            }
         };
         return Control;
     })();
