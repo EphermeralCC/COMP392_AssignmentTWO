@@ -16,6 +16,20 @@ var objects;
             this.fifthPlanetRotation = fourthPlanetRotation;
             this.fifthPlanetOrbit = fifthPlanetOrbit;
         }
+        //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++
+        Control.prototype.zoomIn = function () {
+            camera.position.set(thirdPlanet.position.x, thirdPlanet.position.y + 10, thirdPlanet.position.z - 10);
+            // camera.position.x = thirdPlanet.position.x;
+            // camera.position.z = thirdPlanet.position.z;
+            // camera.lookAt(thirdPlanet.position)
+            console.log(thirdPlanet.position.x);
+            console.log(thirdPlanet.position.z);
+        };
+        Control.prototype.zoomOut = function () {
+            camera.position.x = 0.6;
+            camera.position.y = 60;
+            camera.position.z = -175.5;
+        };
         return Control;
     })();
     objects.Control = Control;

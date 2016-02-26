@@ -83,18 +83,21 @@ function init() {
     // console.log("Added Plane Primitive to scene...");
     
     //Add a Sun to the Scene+++++++++++++++++++++++++++++++++++++++++++//
+    var sunTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/sun.png');
     sun = new gameObject(
         new SphereGeometry(10, 32, 32),
-        new LambertMaterial({ color: 0xff6600 }),
+        new LambertMaterial({ map: sunTexture }),
         0, 0, 0);
 
     scene.add(sun);
     console.log("Added Sun Primitive to scene...");
-
+    
+    //Add First Planet to the scene ++++++++++++++++++++++++++++++++++++++//
+    var firstTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/planetONE.png');
     firstPlanet = new gameObject(
         new SphereGeometry(2, 32, 32),
-        new LambertMaterial({ color: 0xff0000 }),
-        30, 0, 0);
+        new LambertMaterial({ map: firstTexture }),
+        30, 4, 0);
 
     sun.add(firstPlanet)
     console.log("Added First Planet Primitive to cube object...");
@@ -109,10 +112,12 @@ function init() {
     scene.add(secondPlanetParent);
     console.log("Added Second Planet Parent to scene...");
 
+
+    var secondTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/planetTWO.png');
     secondPlanet = new gameObject(
         new SphereGeometry(1.5, 32, 32),
-        new LambertMaterial({ color: 0xff0000 }),
-        0, 0, 45);
+        new LambertMaterial({ map: secondTexture }),
+        0, 8, 45);
 
     secondPlanetParent.add(secondPlanet)
     console.log("Added Second Planet Primitive to cube object...");
@@ -127,22 +132,26 @@ function init() {
     scene.add(thirdPlanetParent);
     console.log("Added Third Planet Parent to scene...");
 
+    var threeTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/planetTHREE.png');
     thirdPlanet = new gameObject(
         new SphereGeometry(4, 32, 32),
-        new LambertMaterial({ color: 0xff0000 }),
-        -70, 0, 0);
+        new LambertMaterial({ map: threeTexture }),
+        -70, 12, 0);
 
+    thirdPlanetParent.add(camera);
     thirdPlanetParent.add(thirdPlanet)
     console.log("Added Third Planet Primitive to cube object...");
     
     //Add a moon to the third planet ++++++++++++++++++++++++++++++++++++++++++++++//
+    var moonTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/moon.png');
     moon = new gameObject(
         new SphereGeometry(1, 32, 32),
-        new LambertMaterial({color: 0xfffff}),
+        new LambertMaterial({ map: moonTexture }),
         5, 0, 0);
-        
-        thirdPlanet.add(moon)
-        console.log("Added moon to the Third Planet");
+
+    moon.castShadow = true;
+    thirdPlanet.add(moon)
+    console.log("Added moon to the Third Planet");
     
     
     //Add a Fourth Planet Parent to the Scene++++++++++++++++++++++++++++++++++++//
@@ -155,10 +164,11 @@ function init() {
     scene.add(fourthPlanetParent);
     console.log("Added Fourth Planet Parent to scene...");
 
+    var fourTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/planetFOUR.png');
     fourthPlanet = new gameObject(
         new SphereGeometry(3, 32, 32),
-        new LambertMaterial({ color: 0xff0000 }),
-        0, 0, -100);
+        new LambertMaterial({ map: fourTexture }),
+        0, 16, -100);
 
     fourthPlanetParent.add(fourthPlanet)
     console.log("Added Fourth Planet Primitive to cube object...");
@@ -173,16 +183,17 @@ function init() {
     scene.add(fifthPlanetParent);
     console.log("Added Fifth Planet Parent to scene...");
 
+    var fiveTexture = THREE.ImageUtils.loadTexture('../../Assets/Images/planetFIVE.png');
     fifthPlanet = new gameObject(
         new SphereGeometry(3, 32, 32),
-        new LambertMaterial({ color: 0xff0000 }),
-        -140, 0, 0);
+        new LambertMaterial({ map: fiveTexture }),
+        -140, 20, 0);
 
     fifthPlanetParent.add(fifthPlanet)
     console.log("Added Fourth Planet Primitive to cube object...");
     
     // Add an AmbientLight to the scene
-    ambientLight = new AmbientLight(0x464646);
+    ambientLight = new AmbientLight(0x646464);
     scene.add(ambientLight);
     console.log("Added an Ambient Light to Scene");
 	
@@ -190,7 +201,7 @@ function init() {
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(0, 31, 0);
     spotLight.rotation.set(0, 0, 0);
-    // spotLight.castShadow = true;
+    spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -198,7 +209,7 @@ function init() {
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(0, -31, 0);
     spotLight.rotation.set(0, 180, 0);
-    // spotLight.castShadow = true;
+    spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -206,7 +217,7 @@ function init() {
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(31, 0, 0);
     spotLight.rotation.set(0, 90, 0);
-    // spotLight.castShadow = true;
+    spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -214,7 +225,7 @@ function init() {
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(0, 0, 31);
     spotLight.rotation.set(270, 0, 0);
-    // spotLight.castShadow = true;
+    spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -222,7 +233,7 @@ function init() {
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(0, 0, -31);
     spotLight.rotation.set(90, 0, 0);
-    // spotLight.castShadow = true;
+    spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -230,7 +241,7 @@ function init() {
     spotLight = new SpotLight(0xffffff);
     spotLight.position.set(-31, 0, 0);
     spotLight.rotation.set(0, 270, 0);
-    // spotLight.castShadow = true;
+    spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -261,17 +272,8 @@ function addControl(controlObject: Control): void {
     gui.add(controlObject, 'firstPlanetRotation', -0.05, 0.05);
     gui.add(controlObject, 'firstPlanetOrbit', -0.05, 0.05);
 
-    gui.add(controlObject, 'secondPlanetRotation', -0.05, 0.05);
-    gui.add(controlObject, 'secondPlanetOrbit', -0.05, 0.05);
-
-    gui.add(controlObject, 'thirdPlanetRotation', -0.05, 0.05);
-    gui.add(controlObject, 'thirdPlanetOrbit', -0.05, 0.05);
-
-    gui.add(controlObject, 'fourthPlanetRotation', -0.05, 0.05);
-    gui.add(controlObject, 'fourthPlanetOrbit', -0.05, 0.05);
-
-    gui.add(controlObject, 'fifthPlanetRotation', -0.05, 0.05);
-    gui.add(controlObject, 'fifthPlanetOrbit', -0.05, 0.05);
+    gui.add(controlObject, 'zoomOut');
+    gui.add(controlObject, 'zoomIn');
 }
 
 function addStatsObject() {
@@ -302,11 +304,18 @@ function gameLoop(): void {
     fifthPlanetParent.rotation.y += control.fifthPlanetOrbit;
     fifthPlanet.rotation.y += control.fifthPlanetRotation;
     
+    // manages the zoomIn and zoomOut of the camera
+    //control.zoomIn();
+    //control.zoomOut();
+    camera.position.x = thirdPlanet.position.x - 5;
+    camera.position.z = thirdPlanet.position.z;
+    
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
 	
     // render the scene
     renderer.render(scene, camera);
+
 }
 
 // Setup default renderer
@@ -324,8 +333,8 @@ function setupCamera(): void {
     camera = new PerspectiveCamera(45, config.Screen.RATIO, 0.1, 1000);
     //camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.x = 0.6;
-    camera.position.y = 20;
-    camera.position.z = -100.5;
+    camera.position.y = 60;
+    camera.position.z = -175.5;
     // camera.position.x = 0.6;
     // camera.position.y = 16;
     // camera.position.z = -20.5;
