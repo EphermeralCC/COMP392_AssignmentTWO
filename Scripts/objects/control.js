@@ -1,3 +1,11 @@
+//The Source file name: control.ts 
+//Author’s name: Christine Cho
+//Last Modified by: Christine Cho
+//Date last Modified: 02/26/2016
+//Program description: Manages the dat.ui to allow for the zoom and rotation of the planets
+//Revision History: 
+//      - Added Zoom Methods 02/26/2016
+//      - Added Planet rotation or orbit 02/20/2016
 /// <reference path="../../typings/tsd.d.ts"/>
 var objects;
 (function (objects) {

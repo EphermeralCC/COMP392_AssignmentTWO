@@ -1,3 +1,13 @@
+//The Source file name: game.ts 
+//Author’s name: Christine Cho
+//Last Modified by: Christine Cho
+//Date last Modified: 02/26/2016
+//Program description: Main controller for the solar system 
+//Revision History: 
+//      - Completed zoom control and added second moon 02/26/2016
+//      - Added textures to the planets and started zoom controls 02/25/2016
+//      - Added Moon and fixed lighting of the scene 02/20/2016
+//      - Added Planets to the scene 02/19/2016
 /// <reference path="_reference.ts"/>
 // MAIN GAME FILE
 // THREEJS Aliases
@@ -126,6 +136,7 @@ function init() {
     spotLight.position.set(0, 31, 0);
     spotLight.rotation.set(0, 0, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     // Add a SpotLight to the scene
@@ -133,6 +144,7 @@ function init() {
     spotLight.position.set(0, -31, 0);
     spotLight.rotation.set(0, 180, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     // Add a SpotLight to the scene
@@ -140,6 +152,7 @@ function init() {
     spotLight.position.set(31, 0, 0);
     spotLight.rotation.set(0, 90, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     // Add a SpotLight to the scene
@@ -147,6 +160,7 @@ function init() {
     spotLight.position.set(0, 0, 31);
     spotLight.rotation.set(270, 0, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     // Add a SpotLight to the scene
@@ -154,6 +168,7 @@ function init() {
     spotLight.position.set(0, 0, -31);
     spotLight.rotation.set(90, 0, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     // Add a SpotLight to the scene
@@ -161,6 +176,7 @@ function init() {
     spotLight.position.set(-31, 0, 0);
     spotLight.rotation.set(0, 270, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     // add controls

@@ -1,8 +1,8 @@
 module config {
     export class Screen {
-        static WIDTH:number = 640;
-        static HEIGHT:number = 480;
-        static RATIO:number = 1.333333;
+        static WIDTH:number = 1280;
+        static HEIGHT:number = 720;
+        static RATIO:number = 1.7777778;
     }
     
 }

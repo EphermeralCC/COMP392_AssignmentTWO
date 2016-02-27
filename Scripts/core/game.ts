@@ -70,6 +70,7 @@ var moon: Mesh;
 var secondMoon: Mesh;
 var sphereGeometry: SphereGeometry;
 
+
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -213,6 +214,7 @@ function init() {
     spotLight.position.set(0, 31, 0);
     spotLight.rotation.set(0, 0, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -221,6 +223,7 @@ function init() {
     spotLight.position.set(0, -31, 0);
     spotLight.rotation.set(0, 180, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -229,6 +232,7 @@ function init() {
     spotLight.position.set(31, 0, 0);
     spotLight.rotation.set(0, 90, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -237,6 +241,7 @@ function init() {
     spotLight.position.set(0, 0, 31);
     spotLight.rotation.set(270, 0, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -245,6 +250,7 @@ function init() {
     spotLight.position.set(0, 0, -31);
     spotLight.rotation.set(90, 0, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
@@ -253,6 +259,7 @@ function init() {
     spotLight.position.set(-31, 0, 0);
     spotLight.rotation.set(0, 270, 0);
     spotLight.castShadow = true;
+    spotLight.intensity = 2;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
